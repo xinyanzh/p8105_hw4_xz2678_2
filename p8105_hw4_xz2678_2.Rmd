@@ -1,0 +1,21 @@
+---
+title: "p8105_hw4_xz2678"
+author: "Xinyan Zheng"
+date: "October 26, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(janitor)
+library(ggridges)
+library(ggthemes)
+```
+
+```{r}
+data_pups <- read_csv("./FAS_pups.csv")%>%
+  clean_names()%>%
+  gather(key= PD_outcome, value= days, pd_ears:pd_walk)
+```
+
+Load and wrangle the dataset. After combining PD ears, PD eyes, PD pivot, PD walk 4 columns into one single variable named **pd_outcomes**, we get the final dataset with `r dim(data_pups)[1]` observations. 
