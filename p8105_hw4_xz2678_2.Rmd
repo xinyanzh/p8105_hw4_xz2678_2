@@ -19,3 +19,16 @@ data_pups <- read_csv("./FAS_pups.csv")%>%
 ```
 
 Load and wrangle the dataset. After combining PD ears, PD eyes, PD pivot, PD walk 4 columns into one single variable named **pd_outcomes**, we get the final dataset with `r dim(data_pups)[1]` observations. 
+
+```{r}
+data_pups %>% 
+  filter(!is.na(days)) %>% 
+  ggplot(aes(x = days, y = PD_outcome)) + 
+  geom_density_ridges(scale = .85)+labs(
+    title = "Ridge Plot for the Post-natal Days of Each Developmental Landmarks ",
+    x = "Post-natal Days",
+    y = "Developmental Landmarks"
+  )
+```
+
+Analysis: According to the plot, the PD eyes have the longest post-natal days while PD ears have the shortest post-natal days. Respectively, the post-natal days for PD ears, PD eyes, PD pivot, PD walk are clustered around 4 days, 7days, 9days,13days.
